@@ -2,8 +2,8 @@ const router = require('express').Router();
 const authController = require('../controller/auth');
 
 router.post(
-  '/signup',
-  (req, res) => authController.signup(req, res),
+  '/singup',
+  (req, res) => authController.singup(req, res),
 );
 router.post(
   '/login',
@@ -11,6 +11,8 @@ router.post(
 );
 router.post(
   '/logout',
-//  passport.authenticate('jwt', { session: false, failWithError: true }),
   (req, res) => authController.logout(req, res),
 );
+
+
+module.exports = router;
