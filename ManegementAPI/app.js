@@ -7,6 +7,7 @@ const passport = require('passport');
 const UserModel = require('./models/user');
 const authRouter = require('./routes/auth');
 const adminRouter = require('./routes/admin');
+const userRouter = require('./routes/user');
 const jwtStrategy = require('./helpers/strategies/jwt');
 const localStrategy = require('./helpers/strategies/local');
 const app = express();
@@ -34,4 +35,5 @@ app.use(passport.session());
 app.use(bodyParser.json())
 app.use('/auth',authRouter);
 app.use('/admin',adminRouter);
+app.use('/user',userRouter);
 app.listen(8080, () => console.log('ManagerAPI Now Running On localhost:8080'));
