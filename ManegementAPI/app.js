@@ -8,10 +8,13 @@ const UserModel = require('./models/user');
 const authRouter = require('./routes/auth');
 const adminRouter = require('./routes/admin');
 const userRouter = require('./routes/user');
+const companyRouter = require('./routes/company');
 const jwtStrategy = require('./helpers/strategies/jwt');
 const localStrategy = require('./helpers/strategies/local');
 const app = express();
+const morgan = require('morgan');
 
+app.use(morgan('dev'));
 mongoose.connect(
   'mongodb://localhost/ManagerAPI',
   { useNewUrlParser: true },
@@ -35,5 +38,6 @@ app.use(passport.session());
 app.use(bodyParser.json())
 app.use('/auth',authRouter);
 app.use('/admin',adminRouter);
+app.use('/company',companyRouter);
 app.use('/user',userRouter);
 app.listen(8080, () => console.log('ManagerAPI Now Running On localhost:8080'));

@@ -12,4 +12,9 @@ router.get(
   (req, res) => adminController.user(req, res),
 );
 
+router.get(
+  '/refresh',
+  passport.authenticate('jwt', { session: false, failWithError: true }),
+  (req, res) => adminController.refresh(req, res),
+);
 module.exports = router ;
